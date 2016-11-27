@@ -31,7 +31,7 @@ class DemoCultivoController extends Controller
         //                               'latitud'  => '198212',
         //                               'longitud' => '129182',
         //                               'admin_id' => $user->id]);
-        // $location = Location::first();
+        $locations = Location::all();
 
         // $visit = Visit::create(['locations_id' => $location->id,
         //                         'users_id'     => $user->id]);
@@ -39,8 +39,10 @@ class DemoCultivoController extends Controller
         // $visit2 = Visit::create(['locations_id' => $location->id,
         //                         'users_id'     => $user->id]);
 
-        return dd($visit);
-        return view('welcome');
+        //return dd($visit);
+ 
+        return view('welcome', compact('locations'));
+        // return view('welcome');
     }
 
     /**
