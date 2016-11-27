@@ -43,12 +43,14 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="list-group">
+                    {{-- Impresion de las locaciones --}}
                     @forelse ($locations as $location)
                         <button type="button" class="list-group-item">{!! $location->nombre !!}</button>
                     @empty
                         <button type="button" class="list-group-item">"No hay locaciones registradas"</button>
                     @endforelse
                 </div>
+                <button type="button" class="btn btn-success" onclick="move_marker();">Hacer check in</button>
                 <button type="button" class="btn btn-primary" onclick="move_marker();">Agregar ubicación</button>
             </div>
             <div class="col-md-8"><div id="map" style="height: 300px;"></div></div>
@@ -103,7 +105,7 @@
         }
 
         function move_marker(){
-            ubicacion = {lat: 19.055199, lng: -98.217253};
+            ubicacion = {lat: 19.055199, lng: -98.2172};
             marker.setPosition(ubicacion);
             map.setCenter(ubicacion)
         }

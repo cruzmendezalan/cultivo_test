@@ -146,6 +146,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Collective\Html\HtmlServiceProvider::class,
+        GeneaLabs\Phpgmaps\PhpgmapsServiceProvider::class,
 
     ],
 
@@ -198,6 +199,8 @@ return [
 
         'Form'      => 'Collective\Html\FormFacade',
         'Html'      => 'Collective\Html\HtmlFacade',
+
+        'Gmaps'     => GeneaLabs\Phpgmaps\Facades\PhpgmapsFacade::class,
 
     ],
 
