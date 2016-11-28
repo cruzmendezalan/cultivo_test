@@ -38,7 +38,10 @@
     </nav>
     <div class="container">
         <div class="row">
-        
+          <a href="{!! url() !!}" title="" class="btn btn-success">Inicio</a>
+        </div>
+        <div class="row">
+          <p>Para agregar una nueva locación mueve el marcador a la posición deseada. A continuación da clic sobre el marcador y despues da clic en el boton agregar locación. <strong>Recuerda que no puedes borrar locaciones que tienen visitas.</strong> </p>
         </div>
         <div class="row">
             <div class="col-md-4">
