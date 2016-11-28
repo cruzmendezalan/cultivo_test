@@ -21,93 +21,29 @@ class DemoCultivoController extends Controller
      */
     public function index()
     {
+        if (User::first() == null) {
+            //Si no hay usuario inicial se crea uno
+           $usuario = User::create(['nombre'       => 'Alan'  ,
+                                    'apellido_pat' => 'cruz'  ,
+                                    'apellido_mat' => 'mendez',
+                                    'email'        => 'cruzmendezalan@gmail.com']);
+        }
         
-        // $usuario = User::create(['nombre'       => 'Alan'  ,
-        //                          'apellido_pat' => 'cruz'  ,
-        //                          'apellido_mat' => 'mendez',
-        //                          'email'        => 'cruzmendezalan@gmail.com']);
-        // $user = User::first();
-        // $location = Location::create(['nombre'   => 'XLugar',
-        //                               'latitud'  => '198212',
-        //                               'longitud' => '129182',
-        //                               'admin_id' => $user->id]);
+
         $locations = Location::all();
+        for ($i=0; $i < count($locations); $i++) { 
+            $locations[$i]->visitas = Visit::where('locations_id', $locations[$i]->id)->count(); 
+        }
 
-        // $visit = Visit::create(['locations_id' => $location->id,
-        //                         'users_id'     => $user->id]);
-
-        // $visit2 = Visit::create(['locations_id' => $location->id,
-        //                         'users_id'     => $user->id]);
-
-        //return dd($visit);
- 
-        return view('welcome', compact('locations'));
-        // return view('welcome');
+        return view('index', compact('locations','visits'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
-    }
+        $visit = Visit::create(['visit_email'  => $request->visit_email,
+                                'locations_id' => $request->ubicacion_id]);
+        return redirect()->back();
+    }   
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
