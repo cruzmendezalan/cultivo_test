@@ -14,13 +14,9 @@ class Visit extends Model
     	Cómo es un demo dejaremos todos lo campos rellenables.
     */
     protected $fillable = ['locations_id',
+                           'visit_email',
     					   'users_id'];
 
-    public function user()
-    {
-        return $this->hasOne('App\User',
-        					 'users_id');
-    }
 
     public function location()
     {

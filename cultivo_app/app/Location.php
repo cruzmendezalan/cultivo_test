@@ -27,6 +27,6 @@ class Location extends Model
     }
 
     public function visits(){
-    	return $this->hasMany('App\Vist');
+    	return $this->hasMany('App\Visit');
     }
 }

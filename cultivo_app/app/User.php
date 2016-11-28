@@ -45,8 +45,4 @@ class User extends Model implements AuthenticatableContract,
         return $this->HasMany('App\Location','admin_id');
     }
 
-    public function visits()
-    {
-        return $this->HasMany('App\Visit','users_id');
-    }
 }
