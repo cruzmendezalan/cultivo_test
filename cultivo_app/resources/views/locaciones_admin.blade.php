@@ -48,13 +48,24 @@
                     <li class="list-group-item">
                       <div class="input-group">
                         <button type="button" class="list-group-item" lat="{!! $location->latitud !!}" lng="{!! $location->longitudgitud !!}" onclick="marker_change(this)">{!! $location->nombre !!}</button>
-                        <span class="input-group-btn">
-                          {!! Form::open(['method' => 'DELETE', 'route' => ['locations.destroy', $location->id]]) !!}
-                              <button class="btn btn-danger" type="submit">
-                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                              </button>
-                          {!! Form::close() !!}
-                        </span>
+                        @if ($location->visitas == 0)
+                          <span class="input-group-btn">
+                            {!! Form::open(['method' => 'DELETE', 'route' => ['locations.destroy', $location->id]]) !!}
+                                <button class="btn btn-danger" type="submit">
+                                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                </button>
+                            {!! Form::close() !!}
+                          </span>
+                        @else
+                          <span class="input-group-btn">
+                            {!! Form::open(['method' => 'DELETE', 'route' => ['locations.destroy', $location->id]]) !!}
+                                <button class="btn btn-danger" type="submit" disabled="disabled">
+                                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                </button>
+                            {!! Form::close() !!}
+                          </span>
+                        @endif
+                        
                       </div><!-- /input-group -->
                     </li>
                     
