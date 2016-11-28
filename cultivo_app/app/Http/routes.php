@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', ['uses'=>'DemoCultivoController@index']);
+
+Route::get('admin', ['uses'=>'LocationsController@index']);
+Route::resource('locations', 'LocationsController');
+Route::resource('cultivo'  , 'DemoCultivoController');
